@@ -1,0 +1,86 @@
+{
+	"playerPos": [
+		[
+			0,
+			0
+		]
+	],
+	"objects": [
+		{
+			"name": "wall1",
+			"width": null,
+			"type": "normal",
+			"skewPos": [
+				0,
+				0
+			],
+			"x": -386,
+			"y": 200,
+			"height": null,
+			"animations": null,
+			"animated": false,
+			"defaultAnim": null,
+			"alpha": 1,
+			"angle": 0,
+			"visible": true,
+			"imagePath": "wall"
+		},
+		{
+			"name": "wall2",
+			"width": null,
+			"type": "normal",
+			"skewPos": [
+				0,
+				0
+			],
+			"x": 463,
+			"y": 200,
+			"height": null,
+			"animations": null,
+			"animated": false,
+			"defaultAnim": null,
+			"alpha": 1,
+			"angle": 0,
+			"visible": true,
+			"imagePath": "wall"
+		},
+		{
+			"name": "wall3",
+			"width": null,
+			"type": "normal",
+			"skewPos": [
+				0,
+				19
+			],
+			"x": 1313,
+			"y": 348,
+			"height": null,
+			"animations": null,
+			"animated": false,
+			"defaultAnim": null,
+			"alpha": 1,
+			"angle": 0,
+			"visible": true,
+			"imagePath": "wall"
+		},
+		{
+			"name": "wall4",
+			"width": null,
+			"type": "normal",
+			"skewPos": [
+				0,
+				-20
+			],
+			"x": -1236,
+			"y": 354,
+			"height": null,
+			"animations": null,
+			"animated": false,
+			"defaultAnim": null,
+			"alpha": 1,
+			"angle": 0,
+			"visible": true,
+			"imagePath": "wall"
+		}
+	]
+}
