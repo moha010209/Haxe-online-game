@@ -51,6 +51,16 @@
         "version": null
       },
       {
+        "name": "echo",
+        "type": "haxelib",
+        "version": null
+      },
+      {
+        "name": "echo-flixel",
+        "type": "haxelib",
+        "version": null
+      },
+      {
         "name": "extension-androidtools",
         "type": "git",
         "dir": null,

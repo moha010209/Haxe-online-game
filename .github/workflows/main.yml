@@ -18,8 +18,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/windows/haxe/
-            export/release/windows/obj/
+            export/windows/haxe/
+            export/windows/obj/
           key: cache-windows-build
 
       - name: Install Libraries
@@ -63,8 +63,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/windows/haxe/
-            export/release/windows/obj/
+            export/windows/haxe/
+            export/windows/obj/
           key: cache-windows-build
 
       - name: Upload Artifact
@@ -91,8 +91,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/linux/haxe/
-            export/release/linux/obj/
+            export/linux/haxe/
+            export/linux/obj/
           key: cache-linux-build
 
       - name: Install Libraries
@@ -137,8 +137,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/linux/haxe/
-            export/release/linux/obj/
+            export/linux/haxe/
+            export/linux/obj/
           key: cache-linux-build
 
       - name: Upload Artifact
@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: linuxBuild
-          path: export/release/linux/bin/*
+          path: export/linux/bin/*
           if-no-files-found: error
   Android:
     runs-on: ubuntu-latest
@@ -177,8 +177,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/android/haxe/
-            export/release/android/obj/
+            export/android/haxe/
+            export/android/obj/
           key: cache-android-build
 
       - name: Install Libraries
@@ -231,8 +231,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/android/haxe/
-            export/release/android/obj/
+            export/android/haxe/
+            export/android/obj/
           key: cache-android-build
 
       - name: Upload Artifact
@@ -240,7 +240,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: androidBuild
-          path: export/release/android/bin/app/build/outputs/apk/release/*.apk
+          path: export/android/bin/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
   iOS:
     runs-on: macos-13
@@ -259,8 +259,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/ios/haxe/
-            export/release/ios/obj/
+            export/ios/haxe/
+            export/ios/obj/
           key: cache-ios-build
 
       - name: Install Libraries
@@ -274,7 +274,7 @@ jobs:
 
       - name: Make Ipa
         run: |
-          cd export/release/ios/build/*-iphoneos
+          cd export/ios/build/*-iphoneos
           mkdir Payload
           mv *.app Payload
           zip -r PsychEngine.ipa Payload
@@ -311,8 +311,8 @@ jobs:
         with:
           path: |
             .haxelib/
-            export/release/ios/haxe/
-            export/release/ios/obj/
+            export/ios/haxe/
+            export/ios/obj/
           key: cache-ios-build
 
       - name: Upload Artifact
@@ -320,5 +320,5 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: iOSBuild
-          path: export/release/ios/build/Release-iphoneos/*.ipa
+          path: export/ios/build/Release-iphoneos/*.ipa
           if-no-files-found: error
