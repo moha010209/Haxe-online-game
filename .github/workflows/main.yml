@@ -101,8 +101,6 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
-          haxelib remove hxCodec
-          haxelib --never install hxCodec --quiet
 
       - name: Compile
         run: haxelib run lime build linux
@@ -272,7 +270,7 @@ jobs:
           haxelib run hmm install --quiet
 
       - name: Compile
-        run: haxelib run lime build ios -D NOVIDEO
+        run: haxelib run lime build ios
 
       - name: Make Ipa
         run: |
