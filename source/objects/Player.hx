@@ -1,5 +1,6 @@
 package objects;
 
+import flixel.addons.effects.FlxSkewedSprite;
 import flixel.graphics.FlxGraphic;
 #if sys
 import sys.io.File;
@@ -10,7 +11,7 @@ import flixel.FlxSprite;
 import shaders.RGBPalette;
 import shaders.RGBPalette.RGBShaderReference;
 
-class Player extends FlxSprite
+class Player extends FlxSkewedSprite
 {
 	public var rgbShader:RGBShaderReference;
 	public function new()
@@ -21,8 +22,8 @@ class Player extends FlxSprite
 		animation.addByPrefix("idle", "idle", 24);
 		animation.addByPrefix("walk", "Walk", 24);
 		animation.play("idle");
-		x = 100;
-		y = 100;
+		x = 1000;
+		y = 1000;
 		var newRGB:RGBPalette = new RGBPalette();
 		rgbShader = new RGBShaderReference(this, newRGB);
 		rgbShader.r = 0xc51111;

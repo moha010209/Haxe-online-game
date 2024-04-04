@@ -1,5 +1,7 @@
 package states;
 
+import objects.MenuButton;
+import flixel.addons.ui.FlxButtonPlus;
 import flixel.ui.FlxButton;
 import flixel.text.FlxText;
 import flixel.FlxState;
@@ -13,12 +15,12 @@ class MainState extends FlxState
 		myText.antialiasing = true;
 		myText.screenCenter(X);
 		add(myText);
-		var playButton = new FlxButton(0, 300, "Play", clickPlay);
+		var playButton = new MenuButton(100, 300, "Play", clickPlay, 150, 60);
 		playButton.screenCenter(X);
 		add(playButton);
-		var playButton = new FlxButton(0, 500, "Edit", function() {
+		var playButton = new MenuButton(0, 500, "Edit", function() {
 			FlxG.switchState(new StageEditor());
-		});
+		}, 300, 120);
 		playButton.screenCenter(X);
 		add(playButton);
 		super.create();

@@ -43,6 +43,7 @@ class MapLoader {
 		jsonData = Json.parse(data);
         for (objectD in jsonData.objects) {
             var object:FlxSkewedSprite = new FlxSkewedSprite(objectD.x, objectD.y);
+            object.cameras = [PlayState.instance.camGame];
             if (objectD.animated) {
 				object.frames = FlxAtlasFrames.fromSparrow("assets/images/" + objectD.imagePath + ".png", "assets/images/" + objectD.imagePath + ".xml");
                 for (animationD in objectD.animations) {
@@ -68,8 +69,10 @@ class MapLoader {
                 );
             }
             object.antialiasing = true;
-            PlayState.instance.objects.set(objectD.name, object);
-			PlayState.instance.add(object);
+			object.updateHitbox();
+            //PlayState.instance.objects.set(objectD.name, object);
+			//object.add_to_group(PlayState.instance.objects);
+			PlayState.instance.objects.add(object);
         }
         PlayState.instance.player.x = jsonData.playerPos[0][0];
 		PlayState.instance.player.y = jsonData.playerPos[0][1];

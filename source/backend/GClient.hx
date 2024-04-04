@@ -20,7 +20,7 @@ class GClient
 
 	public static function connect()
 	{
-		client = new Client("ws://" + ClientPrefs.data.address);
+		client = new Client("http://" + ClientPrefs.data.address);
 	}
 
 	public static function createORjoinGame()
@@ -41,6 +41,7 @@ class GClient
 				if (room.sessionId != key)
 				{
 					var playerP = new Player();
+					playerP.cameras = [PlayState.instance.camGame];
 					PlayState.instance.players.set(key, playerP);
 					playerP.x = entity.x;
 					playerP.y = entity.y;
@@ -62,7 +63,7 @@ class GClient
 				}
 			});
 
-			roomD.state.objects.onAdd(function(entity, key)
+			/*roomD.state.objects.onAdd(function(entity, key)
 			{
 				var object:FlxSkewedSprite = new FlxSkewedSprite(entity.x, entity.y);
 				if (entity.animated)
@@ -97,7 +98,7 @@ class GClient
 			{
 				trace("entity removed at " + key + " => " + entity);
 				PlayState.instance.remove(PlayState.instance.objects.get(key));
-			});
+			});*/
 
 			roomD.onMessage("loadScript", function(data)
 			{
@@ -118,5 +119,12 @@ class GClient
 	{
 		if (room != null)
 			room.send(type, data);
+	}
+
+	public static function leave()
+	{
+		if (room != null)
+			room.leave();
+		room = null;
 	}
 }
