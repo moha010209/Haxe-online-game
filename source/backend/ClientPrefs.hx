@@ -5,7 +5,7 @@ import flixel.util.FlxSave;
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables
 {
-	public var address:String = "localhost:2567";
+	public var address:String = "192.168.1.15:2567";
 	public var cacheOnGPU:Bool = false;
 }
 
