@@ -29,7 +29,7 @@ class GClient
 		{
 			if (err != null)
 			{
-				trace("Couldn't connect!", " JOIN ERROR: " + err.code + " - " + err.message);
+				trace("Couldn't connect!  JOIN ERROR: " + err.code + " - " + err.message);
 				client = null;
 				return;
 			}

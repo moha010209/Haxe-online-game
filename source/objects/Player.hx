@@ -14,6 +14,8 @@ import shaders.RGBPalette.RGBShaderReference;
 class Player extends FlxSkewedSprite
 {
 	public var rgbShader:RGBShaderReference;
+	public static var MAX_SPEED_X:Float = 200;
+	public static var MAX_SPEED_Y:Float = 200;
 	public function new()
 	{
 		super();
@@ -22,8 +24,8 @@ class Player extends FlxSkewedSprite
 		animation.addByPrefix("idle", "idle", 24);
 		animation.addByPrefix("walk", "Walk", 24);
 		animation.play("idle");
-		x = 1000;
-		y = 1000;
+		x = 0;
+		y = 0;
 		var newRGB:RGBPalette = new RGBPalette();
 		rgbShader = new RGBShaderReference(this, newRGB);
 		rgbShader.r = 0xc51111;

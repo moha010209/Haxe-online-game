@@ -1,12 +1,13 @@
 package backend;
 
+import haxe.io.Bytes;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.ByteArray;
 import openfl.display3D.textures.RectangleTexture;
 import openfl.display.BitmapData;
 import flixel.graphics.FlxGraphic;
 import openfl.utils.Assets as OpenFlAssets;
-import com.akifox.asynchttp.*;
+import haxe.Http;
 
 class Paths {
     static public function getPath(path:String) {
@@ -41,27 +42,21 @@ class Paths {
 				bitmap = OpenFlAssets.getBitmapData(file);
 			else
 			{
-				var request = new HttpRequest({
-					url: "http://" + ClientPrefs.data.address + '/images/$key.png',
-					async: false,
-					callback: function(response:HttpResponse):Void
-					{
-						if (response.isOK)
-						{
-							//#if !cpp
-							bitmap = BitmapData.fromBytes(ByteArray.fromBytes(response.contentRaw));
-							//#else
-							//bitmap = response.toBitmapData();
-							//#end
-							trace('DONE ${response.status}');
-						}
-						else
-						{
-							trace('ERROR ${response.status} ${response.error}');
-						}
-					}
-				});
-				request.send();
+				var url = "http://" + ClientPrefs.data.address + '/images/$key.png'; // Replace with your desired API endpoint
+				var http = new Http(url);
+
+				http.onBytes = function(bytes:Bytes)
+				{
+					trace("Received data from " + http.url);
+					bitmap = BitmapData.fromBytes(ByteArray.fromBytes(bytes));
+				};
+
+				http.onError = function(error)
+				{
+					trace("Error occurred: " + error);
+				};
+
+				http.request(false);
             }
 		}
 
@@ -134,23 +129,22 @@ class Paths {
             return OpenFlAssets.getText(file);
         else {
             var text:String = "";
-			var request = new HttpRequest({
-				url: "http://" + ClientPrefs.data.address + '/$path',
-				async: false,
-				callback: function(response:HttpResponse):Void
-				{
-					if (response.isOK)
-					{
-						text = response.toText();
-						trace('DONE ${response.status}');
-					}
-					else
-					{
-						trace('ERROR ${response.status} ${response.error}');
-					}
-				}
-			});
-			request.send();
+			
+			var url = "http://" + ClientPrefs.data.address + '/$path'; // Replace with your desired API endpoint
+			var http = new Http(url);
+
+			http.onData = function(data:String)
+			{
+				trace("Received data from " + http.url);
+				text = data;
+			};
+
+			http.onError = function(error)
+			{
+				trace("Error occurred: " + error);
+			};
+
+			http.request(false);
             return text;
         }
 	}

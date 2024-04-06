@@ -13,6 +13,7 @@ import openfl.system.System;
 class Main extends Sprite
 {
 	public static var fpsVar:FPSCounter;
+	public static var toast:ToastCore; // notification thing, credits go to MAJigsaw77
 	public function new()
 	{
 		super();
@@ -26,6 +27,8 @@ class Main extends Sprite
 		{
 			fpsVar.visible = true;
 		}
+		toast = new ToastCore();
+		addChild(toast);
 	}
 }
 

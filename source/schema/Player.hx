@@ -21,4 +21,10 @@ class Player extends Schema {
 
 	@:type("string")
 	public var animation:String = "idle";
+
+	@:type("string")
+	public var role:String = "crewmate";
+
+	@:type("string")
+	public var additionalrole:String = "normal";
 }
